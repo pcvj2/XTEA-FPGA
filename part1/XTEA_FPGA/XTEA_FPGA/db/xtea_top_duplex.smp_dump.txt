@@ -1,0 +1,56 @@
+
+State Machine - |xtea_top_duplex|enc_stream_state
+Name enc_stream_state.ENC_3 enc_stream_state.ENC_2 enc_stream_state.ENC_1 enc_stream_state.ENC_0 enc_stream_state.ENC_IDLE 
+enc_stream_state.ENC_IDLE 0 0 0 0 0 
+enc_stream_state.ENC_0 0 0 0 1 1 
+enc_stream_state.ENC_1 0 0 1 0 1 
+enc_stream_state.ENC_2 0 1 0 0 1 
+enc_stream_state.ENC_3 1 0 0 0 1 
+
+State Machine - |xtea_top_duplex|cipher_state
+Name cipher_state.CIPH_2 cipher_state.CIPH_1 cipher_state.CIPH_0 cipher_state.CIPH_IDLE 
+cipher_state.CIPH_IDLE 0 0 0 0 
+cipher_state.CIPH_0 0 0 1 1 
+cipher_state.CIPH_1 0 1 0 1 
+cipher_state.CIPH_2 1 0 0 1 
+
+State Machine - |xtea_top_duplex|data_state
+Name data_state.DATA_2 data_state.DATA_1 data_state.DATA_0 data_state.DATA_IDLE 
+data_state.DATA_IDLE 0 0 0 0 
+data_state.DATA_0 0 0 1 1 
+data_state.DATA_1 0 1 0 1 
+data_state.DATA_2 1 0 0 1 
+
+State Machine - |xtea_top_duplex|key_state
+Name key_state.KEY_3 key_state.KEY_2 key_state.KEY_1 key_state.KEY_0 key_state.KEY_IDLE 
+key_state.KEY_IDLE 0 0 0 0 0 
+key_state.KEY_0 0 0 0 1 1 
+key_state.KEY_1 0 0 1 0 1 
+key_state.KEY_2 0 1 0 0 1 
+key_state.KEY_3 1 0 0 0 1 
+
+State Machine - |xtea_top_duplex|xtea_dec:DEC_UNIT|state
+Name state.OUT3 state.OUT2 state.OUT1 state.OUT0 state.EXEC state.LOAD3 state.LOAD2 state.LOAD1 state.LOAD0 state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 
+state.LOAD0 0 0 0 0 0 0 0 0 1 1 
+state.LOAD1 0 0 0 0 0 0 0 1 0 1 
+state.LOAD2 0 0 0 0 0 0 1 0 0 1 
+state.LOAD3 0 0 0 0 0 1 0 0 0 1 
+state.EXEC 0 0 0 0 1 0 0 0 0 1 
+state.OUT0 0 0 0 1 0 0 0 0 0 1 
+state.OUT1 0 0 1 0 0 0 0 0 0 1 
+state.OUT2 0 1 0 0 0 0 0 0 0 1 
+state.OUT3 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |xtea_top_duplex|xtea_enc:ENC_UNIT|state
+Name state.OUT3 state.OUT2 state.OUT1 state.OUT0 state.EXEC state.LOAD3 state.LOAD2 state.LOAD1 state.LOAD0 state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 0 0 0 
+state.LOAD0 0 0 0 0 0 0 0 0 1 1 
+state.LOAD1 0 0 0 0 0 0 0 1 0 1 
+state.LOAD2 0 0 0 0 0 0 1 0 0 1 
+state.LOAD3 0 0 0 0 0 1 0 0 0 1 
+state.EXEC 0 0 0 0 1 0 0 0 0 1 
+state.OUT0 0 0 0 1 0 0 0 0 0 1 
+state.OUT1 0 0 1 0 0 0 0 0 0 1 
+state.OUT2 0 1 0 0 0 0 0 0 0 1 
+state.OUT3 1 0 0 0 0 0 0 0 0 1 

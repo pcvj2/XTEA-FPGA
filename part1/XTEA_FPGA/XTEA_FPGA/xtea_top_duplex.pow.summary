@@ -1,0 +1,12 @@
+Power Analyzer Status : Successful - Sun May 11 08:11:40 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : xtea_top_duplex
+Top-level Entity Name : xtea_top_duplex
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Power Models : Final
+Total Thermal Power Dissipation : 451.67 mW
+Core Dynamic Thermal Power Dissipation : 9.80 mW
+Core Static Thermal Power Dissipation : 411.41 mW
+I/O Thermal Power Dissipation : 30.45 mW
+Power Estimation Confidence : Low: user provided insufficient toggle rate data
