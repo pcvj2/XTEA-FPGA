@@ -134,6 +134,15 @@ This matches the reference C implementation exactly and was verified against all
 
 ## Simulation
 
+### XTEA Duplex Core — QuestaSim / ModelSim
+
+A TCL script is provided. In the QuestaSim transcript window:
+
+```tcl
+cd XTEA_simulation
+do run_xtea_tb.tcl
+```
+
 ### XTEA Duplex Core — GHDL
 
 ```bash
@@ -178,6 +187,15 @@ gtkwave cs_wave.vcd
 
 ### Cryptography System — QuestaSim / ModelSim
 
+A TCL script is provided that compiles all files, sets up waveform dividers, and runs the simulation automatically. In the QuestaSim transcript window:
+
+```tcl
+cd CS_simulation
+do run_cs_tb.tcl
+```
+
+Or manually:
+
 ```tcl
 vlib work
 vlog ip_enc_gen.sv ip_dec_gen.sv
@@ -188,8 +206,11 @@ vcom -2008 xtea_top_duplex.vhd
 vcom -2008 cs_top.vhd
 vcom -2008 cs_tb.vhd
 vsim work.cs_tb
-run -all
+run 2000ns
+wave zoom full
 ```
+
+> **Note:** `run_cs_tb.tcl` was written for the original design and references some signal names that changed during the bug fix. The waveform dividers will still load but a few specific internal signals may not resolve — use the manual commands above for a clean run.
 
 ---
 
