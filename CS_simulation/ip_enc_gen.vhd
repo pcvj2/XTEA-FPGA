@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity ip_enc_gen is
+    Port (
+        clk      : in  std_logic;
+        reset    : in  std_logic;
+        data_out : out std_logic_vector(9 downto 0);
+        req      : out std_logic
+    );
+end ip_enc_gen;
+
+architecture Behavioral of ip_enc_gen is
+    constant PLAINTEXT : std_logic_vector(127 downto 0) := x"A5A5A5A501234567FEDCBA985A5A5A5A";
+    signal count  : integer range 0 to 16 := 0;
+    signal active : std_logic := '0';
+begin
+    process(clk)
+        variable byte_val : std_logic_vector(7 downto 0);
+    begin
+        if rising_edge(clk) then
+            if reset = '1' then
+                count    <= 0;
+                req      <= '0';
+                data_out <= (others => '0');
+                active   <= '1';
+            else
+                if active = '1' then
+                    if count < 16 then
+                        byte_val := PLAINTEXT(127 - 8*count downto 120 - 8*count);
+                        data_out <= std_logic_vector(to_unsigned(count mod 4, 2)) & byte_val;
+                        req      <= '1';
+                        count    <= count + 1;
+                    else
+                        req    <= '0';
+                        active <= '0';
+                    end if;
+                else
+                    req <= '0';
+                end if;
+            end if;
+        end if;
+    end process;
+end Behavioral;

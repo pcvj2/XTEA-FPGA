@@ -1,0 +1,13 @@
+v 4
+file . "xtea_tb.vhd" "eeae6e3df7bed0019a7b9cdafad2d4d441104eee" "20260220124312.801":
+  entity xtea_tb at 17( 1299) + 0 on 25;
+  architecture tb of xtea_tb at 25( 1430) + 0 on 26;
+file . "xtea_dec.vhd" "6b07b49b73386f1dcf4451f671baa94a0494b4b9" "20260220124312.773":
+  entity xtea_dec at 1( 0) + 0 on 21;
+  architecture behavioral of xtea_dec at 28( 1057) + 0 on 22;
+file . "xtea_enc.vhd" "ecc36434e56ee1a19b01e3356783c425347c05c8" "20260220124312.758":
+  entity xtea_enc at 1( 0) + 0 on 19;
+  architecture behavioral of xtea_enc at 23( 851) + 0 on 20;
+file . "xtea_top_duplex.vhd" "12e00cea94d0e9db98d49453d91ea05a6aae080f" "20260220124312.787":
+  entity xtea_top_duplex at 1( 0) + 0 on 23;
+  architecture behavioral of xtea_top_duplex at 33( 1455) + 0 on 24;

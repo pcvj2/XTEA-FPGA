@@ -1,0 +1,25 @@
+v 4
+file . "cs_tb.vhd" "0ce62dc606202d670af5c0ea7a67520a076e0fab" "20260220172233.524":
+  entity cs_tb at 1( 0) + 0 on 45;
+  architecture sim of cs_tb at 10( 120) + 0 on 46;
+file . "xtea_top_duplex.vhd" "12e00cea94d0e9db98d49453d91ea05a6aae080f" "20260220172233.493":
+  entity xtea_top_duplex at 1( 0) + 0 on 41;
+  architecture behavioral of xtea_top_duplex at 33( 1455) + 0 on 42;
+file . "xtea_enc.vhd" "ecc36434e56ee1a19b01e3356783c425347c05c8" "20260220172233.467":
+  entity xtea_enc at 1( 0) + 0 on 37;
+  architecture behavioral of xtea_enc at 23( 851) + 0 on 38;
+file . "ip_dec_gen.vhd" "177ae92687ca971ca1e705efafdbf10ca57f17f5" "20260220172233.440":
+  entity ip_dec_gen at 1( 0) + 0 on 33;
+  architecture behavioral of ip_dec_gen at 14( 280) + 0 on 34;
+file . "ip_enc_gen.vhd" "19cafd9a2cc76fbc4f7e7b402d2ec03af60285ff" "20260220172233.425":
+  entity ip_enc_gen at 1( 0) + 0 on 31;
+  architecture behavioral of ip_enc_gen at 14( 280) + 0 on 32;
+file . "mini_router.vhd" "9c3820552e3ed5e4c6e42e99791bf460f099639e" "20260220172233.453":
+  entity mini_router at 1( 0) + 0 on 35;
+  architecture arch of mini_router at 31( 1104) + 0 on 36;
+file . "xtea_dec.vhd" "38130856db6052d6c41bcdcb5a6db4b5e00de8b1" "20260220172233.480":
+  entity xtea_dec at 1( 0) + 0 on 39;
+  architecture behavioral of xtea_dec at 18( 518) + 0 on 40;
+file . "cs_top.vhd" "7cda9eb501fcedb2d5db2681766fdf3ea96f3f91" "20260220172233.510":
+  entity cs_top at 1( 0) + 0 on 43;
+  architecture arch of cs_top at 38( 1609) + 0 on 44;
