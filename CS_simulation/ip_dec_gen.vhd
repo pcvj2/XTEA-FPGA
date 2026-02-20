@@ -17,7 +17,8 @@ architecture Behavioral of ip_dec_gen is
     signal active : std_logic := '0';
 begin
     process(clk)
-        variable byte_val : std_logic_vector(7 downto 0);
+        variable byte_val   : std_logic_vector(7 downto 0);
+        variable priority_v : std_logic_vector(1 downto 0);
     begin
         if rising_edge(clk) then
             if reset = '1' then
@@ -28,10 +29,12 @@ begin
             else
                 if active = '1' then
                     if count < 16 then
-                        byte_val := CIPHERTEXT(127 - 8*count downto 120 - 8*count);
-                        data_out <= std_logic_vector(to_unsigned(count mod 4, 2)) & byte_val;
-                        req      <= '1';
-                        count    <= count + 1;
+                        -- Format: {payload[7:0], priority[1:0]} — priority in LSBs to match router
+                        byte_val   := CIPHERTEXT(127 - 8*count downto 120 - 8*count);
+                        priority_v := std_logic_vector(to_unsigned(count mod 4, 2));
+                        data_out   <= byte_val & priority_v;
+                        req        <= '1';
+                        count      <= count + 1;
                     else
                         req    <= '0';
                         active <= '0';

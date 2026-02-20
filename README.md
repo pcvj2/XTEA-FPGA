@@ -27,7 +27,7 @@ Both designs were validated through simulation and synthesised for the Altera DE
 | Frequency (Fmax) | 70.37 MHz |
 | Logic Utilisation | 920 ALMs (3%) |
 | Core Dynamic Power | 9.44 mW |
-| Latency | 66 clock cycles per block |
+| Latency | ~71 cycles (first `data_valid` to first `ciphertext_valid`) |
 
 ---
 
@@ -49,7 +49,7 @@ The encryption and decryption cores implement 32 Feistel rounds using a **two-st
 
 This two-cycle approach is required in VHDL because signal assignments are **non-blocking** — all assignments in a clocked process take effect simultaneously at the next clock edge. A single-cycle EXEC causes `v1` to be computed using `v0_old` rather than `v0_new`, producing incorrect ciphertext. See the [Key Bug Fix](#key-bug-fix) section for full details.
 
-**Throughput:** 64 clock cycles per 128-bit block (32 rounds × 2 states) plus ~10 cycles for loading and output streaming, giving approximately **148 total cycles** for a full encrypt + decrypt operation.
+**Throughput:** 64 clock cycles of computation (32 rounds × 2 states) plus ~7 cycles for loading and output, giving approximately **71 cycles** from first `data_valid` asserted to first `ciphertext_valid` asserted on the enc core. A full encrypt + decrypt operation takes approximately **150 cycles** end to end.
 
 ### Cryptography System
 
@@ -127,7 +127,8 @@ This matches the reference C implementation exactly and was verified against all
 │
 ├── CS_FPGA/                # Cryptography system Quartus project (DE1-SoC)
 ├── screenshots/            # Simulation waveforms
-└── report/                 # Project report (PDF)
+├── report/                 # Project report (PDF)
+└── LICENSE                 # MIT License
 ```
 
 ---
@@ -219,7 +220,7 @@ wave zoom full
 | # | Key | Plaintext | Expected Ciphertext |
 |---|-----|-----------|---------------------|
 | 1 | `DEADBEEF01234567 89ABCDEFDEADBEEF` | `A5A5A5A501234567 FEDCBA985A5A5A5A` | `7409807B CC3B0E75 9EFD53A8 AEA16A76` |
-| 2 | `7346772346534858 9734637824782378` | `FEDCBAFE DCBAFEDC BAFEDC BA FEDCBAFE` | `484CB4AD E7DA7886 B262FE21 701DF2B2` |
+| 2 | `7346772346534858 9734637824782378` | `FEDCBAFE DCBAFEDC BAFEDCBA FEDCBAFE` | `484CB4AD E7DA7886 B262FE21 701DF2B2` |
 | 3 | `ABCDEFABCDEFABCD EFABCDEFABCDEFAB` | `46893489 23789423 89646238 12300325` | `5DD6C1FD AAC5F093 4C20AC7E 68E3D758` |
 
 All three test vectors pass in simulation.
